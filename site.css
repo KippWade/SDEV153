@@ -1,57 +1,109 @@
+/* Mickey Mouse-themed accessible CSS */
+
+/* Root variables for Mickey Mouse color theme */
+:root {
+  --mickey-black: #1a1a1a; /* Mickey's fur, high contrast */
+  --mickey-white: #f5f5f5; /* Mickey's gloves/face */
+  --mickey-red: #c8102e; /* Mickey's shorts */
+  --mickey-yellow: #ffc107; /* Mickey's shoes */
+  --focus-outline: #00f; /* Accessible focus color */
+}
+
+/* General body styling */
 body {
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-  color: #333;
-  background-color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px; /* Base font size for readability */
+  line-height: 1.6; /* Adequate line spacing */
+  color: var(--mickey-black);
+  background-color: var(--mickey-white);
   margin: 0;
   padding: 20px;
 }
-header, main, footer {
-  max-width: 800px;
-  margin: 0 auto;
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--mickey-red);
+  margin-bottom: 1rem;
 }
+
+/* Links */
+a {
+  color: var(--mickey-red);
+  text-decoration: underline; /* Ensures links are identifiable */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a:hover, a:focus {
+  color: var(--mickey-yellow);
+  background-color: var(--mickey-black);
+  outline: 3px solid var(--focus-outline);
+  outline-offset: 2px; /* Clear focus indicator */
+}
+
+/* Buttons */
+button {
+  background-color: var(--mickey-red);
+  color: var(--mickey-white);
+  border: 2px solid var(--mickey-black);
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover, button:focus {
+  background-color: var(--mickey-yellow);
+  color: var(--mickey-black);
+  outline: 3px solid var(--focus-outline);
+  outline-offset: 2px;
+  transform: scale(1.05); /* Subtle zoom for interaction */
+}
+
+/* Form inputs */
+input, textarea, select {
+  border: 2px solid var(--mickey-black);
+  background-color: var(--mickey-white);
+  color: var(--mickey-black);
+  font-size: 1rem;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 3px solid var(--focus-outline);
+  outline-offset: 2px;
+}
+
+/* Navigation */
 nav {
-  background: #005566;
-  padding: 10px;
+  background-color: var(--mickey-black);
+  padding: 1rem;
+  border-radius: 8px;
 }
+
 nav ul {
   list-style: none;
   padding: 0;
   display: flex;
-  gap: 20px;
+  gap: 1rem;
 }
+
 nav a {
-  color: #fff;
-  text-decoration: none;
+  color: var(--mickey-white);
   padding: 8px 16px;
   border-radius: 4px;
 }
+
 nav a:hover, nav a:focus {
-  background: #003d4a;
-  outline: 2px solid #fff;
-  outline-offset: 2px;
+  background-color: var(--mickey-red);
+  color: var(--mickey-white);
 }
-h1, h2 {
-  color: #005566;
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
-button {
-  background: #005566;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  border-radius: 4px;
-}
-button:hover, button:focus {
-  background: #003d4a;
-  outline: 2px solid #000;
-  outline-offset: 2px;
-}
+
+/* Screen reader only class */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -61,4 +113,42 @@ button:hover, button:focus {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid var(--mickey-black);
+  border-radius: 4px;
+}
+
+/* Ensure high contrast for text */
+p, li, span {
+  color: var(--mickey-black);
+}
+
+/* Media query for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  button, a {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Media query for high contrast mode */
+@media (prefers-contrast: high) {
+  body {
+    background-color: #fff;
+    color: #000;
+  }
+  button {
+    background-color: #000;
+    color: #fff;
+    border: 2px solid #fff;
+  }
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
 }
