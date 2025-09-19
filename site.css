@@ -1,12 +1,9 @@
-/* Mickey Mouse-themed accessible CSS */
-
-/* Root variables for Mickey Mouse color theme */
 :root {
-  --mickey-black: #1a1a1a; /* Mickey's fur, high contrast */
-  --mickey-white: #f5f5f5; /* Mickey's gloves/face */
-  --mickey-red: #c8102e; /* Mickey's shorts */
-  --mickey-yellow: #ffc107; /* Mickey's shoes */
-  --focus-outline: #00f; /* Accessible focus color */
+  --mouse-black: #1a1a1a;
+  --mouse-white: #f5f5f5;
+  --mouse-red: #c8102e;
+  --mouse-yellow: #ffc107;
+  --focus-outline: #00f;
 }
 
 /* General body styling */
@@ -14,37 +11,37 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px; /* Base font size for readability */
   line-height: 1.6; /* Adequate line spacing */
-  color: var(--mickey-black);
-  background-color: var(--mickey-white);
+  color: var(--mouse-black);
+  background-color: var(--mouse-white);
   margin: 0;
   padding: 20px;
 }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--mickey-red);
+  color: var(--mouse-red);
   margin-bottom: 1rem;
 }
 
 /* Links */
 a {
-  color: var(--mickey-red);
+  color: var(--mouse-red);
   text-decoration: underline; /* Ensures links are identifiable */
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 a:hover, a:focus {
-  color: var(--mickey-yellow);
-  background-color: var(--mickey-black);
+  color: var(--mouse-yellow);
+  background-color: var(--mouse-black);
   outline: 3px solid var(--focus-outline);
   outline-offset: 2px; /* Clear focus indicator */
 }
 
 /* Buttons */
 button {
-  background-color: var(--mickey-red);
-  color: var(--mickey-white);
-  border: 2px solid var(--mickey-black);
+  background-color: var(--mouse-red);
+  color: var(--mouse-white);
+  border: 2px solid var(--mouse-black);
   padding: 10px 20px;
   font-size: 1rem;
   border-radius: 8px;
@@ -53,8 +50,8 @@ button {
 }
 
 button:hover, button:focus {
-  background-color: var(--mickey-yellow);
-  color: var(--mickey-black);
+  background-color: var(--mouse-yellow);
+  color: var(--mouse-black);
   outline: 3px solid var(--focus-outline);
   outline-offset: 2px;
   transform: scale(1.05); /* Subtle zoom for interaction */
@@ -62,9 +59,9 @@ button:hover, button:focus {
 
 /* Form inputs */
 input, textarea, select {
-  border: 2px solid var(--mickey-black);
-  background-color: var(--mickey-white);
-  color: var(--mickey-black);
+  border: 2px solid var(--mouse-black);
+  background-color: var(--mouse-white);
+  color: var(--mouse-black);
   font-size: 1rem;
   padding: 8px;
   border-radius: 4px;
@@ -80,7 +77,7 @@ input:focus, textarea:focus, select:focus {
 
 /* Navigation */
 nav {
-  background-color: var(--mickey-black);
+  background-color: var(--mouse-black);
   padding: 1rem;
   border-radius: 8px;
 }
@@ -93,14 +90,14 @@ nav ul {
 }
 
 nav a {
-  color: var(--mickey-white);
+  color: var(--mouse-white);
   padding: 8px 16px;
   border-radius: 4px;
 }
 
 nav a:hover, nav a:focus {
-  background-color: var(--mickey-red);
-  color: var(--mickey-white);
+  background-color: var(--mouse-red);
+  color: var(--mouse-white);
 }
 
 /* Screen reader only class */
@@ -119,13 +116,13 @@ nav a:hover, nav a:focus {
 img {
   max-width: 100%;
   height: auto;
-  border: 2px solid var(--mickey-black);
+  border: 2px solid var(--mouse-black);
   border-radius: 4px;
 }
 
 /* Ensure high contrast for text */
 p, li, span {
-  color: var(--mickey-black);
+  color: var(--mouse-black);
 }
 
 /* Media query for reduced motion */
