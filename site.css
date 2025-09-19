@@ -1,3 +1,45 @@
+/* Accessible Mickey Mouse Theme */
+
+/* Define the color palette */
+:root {
+  /* Light Mode Colors */
+  --mickey-black: #000000;
+  --mickey-red: #DA0F10; /* Original bright red */
+  --mickey-bright-yellow: #FFB321; /* Bright yellow */
+  --mickey-white: #FFFFFF;
+
+  /* Accessible High-Contrast Variants */
+  --mickey-red-high-contrast: #B40000; /* Darker red for text on light backgrounds */
+  --mickey-yellow-high-contrast: #E58E00; /* Darker yellow for text on light backgrounds */
+  
+  /* Text and Background Colors (default to light mode) */
+  --text-color: var(--mickey-black);
+  --background-color: var(--mickey-white);
+  --accent-color: var(--mickey-red-high-contrast);
+  --link-color: var(--mickey-red-high-contrast);
+  --hover-color: var(--mickey-yellow-high-contrast);
+}
+
+/* Dark Mode support using a media query */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text-color: var(--mickey-white);
+    --background-color: #121212; /* A dark gray for less strain */
+    --accent-color: var(--mickey-red);
+    --link-color: var(--mickey-bright-yellow);
+    --hover-color: var(--mickey-red);
+  }
+}
+
+/* Optional: Add a class-based toggle for manual switching */
+body.dark-theme {
+  --text-color: var(--mickey-white);
+  --background-color: #121212;
+  --accent-color: var(--mickey-red);
+  --link-color: var(--mickey-bright-yellow);
+  --hover-color: var(--mickey-red);
+}
+
 body {
   background-color: var(--background-color);
   color: var(--text-color);
