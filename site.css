@@ -154,7 +154,7 @@ p, li, span {
 .container {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    max-width: 900px;
+    max-width: 75vw;
     margin: 20px auto;
     gap: 20px;
 }
