@@ -6,6 +6,56 @@
     <meta name="description" content="A website of Disney related book reviews">
     <title>Mouse Books</title>
     <link rel="stylesheet" href="site.css">
+       <style>
+        main {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 75vh;
+            background-color: #f0f0f0;
+        }
+        #content {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 400px;
+        }
+        .nav-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 10px;
+        }
+        .nav-controls button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .nav-controls button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .nav-controls span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header role="banner">
@@ -20,6 +70,84 @@
     <main id="main-content" role="main">
         <section aria-labelledby="page-heading">
             <h2 id="page-heading">Book reviews</h2>
+                <div class="nav-controls">
+                    <button id="prevBtn" disabled>← Previous</button>
+                    <span id="pageIndicator">Page 1 of 3</span>
+                    <button id="nextBtn">Next →</button>
+                </div>
+                <div id="content">
+                    <p>Loading content...</p>
+                </div>
+
+                <script>
+                    // Array of HTML files to cycle through
+                    const books = [
+                        'books/book1.html',
+                        'books/book2.html',
+                        'books/book3.html'
+                    ];
+                    let currentPageIndex = 0;
+
+                    // DOM elements
+                    const contentDiv = document.getElementById('content');
+                    const prevBtn = document.getElementById('prevBtn');
+                    const nextBtn = document.getElementById('nextBtn');
+                    const pageIndicator = document.getElementById('pageIndicator');
+
+                    // Load content from an HTML file
+                    function loadContent(index) {
+                        fetch(books[index])
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Failed to load page');
+                                }
+                                return response.text();
+                            })
+                            .then(data => {
+                                contentDiv.innerHTML = data;
+                                updateNavigation();
+                            })
+                            .catch(error => {
+                                contentDiv.innerHTML = `<p class="error">Error loading content: ${error.message}</p>`;
+                            });
+                    }
+
+                    // Update navigation buttons and page indicator
+                    function updateNavigation() {
+                        prevBtn.disabled = currentPageIndex === 0;
+                        nextBtn.disabled = currentPageIndex === books.length - 1;
+                        pageIndicator.textContent = `Book ${currentPageIndex + 1} of ${books.length}`;
+                    }
+
+                    // Handle keypress events
+                    document.addEventListener('keydown', (event) => {
+                        if (event.key === 'ArrowLeft' && currentPageIndex > 0) {
+                            currentPageIndex--;
+                            loadContent(currentPageIndex);
+                        } else if (event.key === 'ArrowRight' && currentPageIndex < books.length - 1) {
+                            currentPageIndex++;
+                            loadContent(currentPageIndex);
+                        }
+                    });
+
+                    // Handle button clicks
+                    prevBtn.addEventListener('click', () => {
+                        if (currentPageIndex > 0) {
+                            currentPageIndex--;
+                            loadContent(currentPageIndex);
+                        }
+                    });
+
+                    nextBtn.addEventListener('click', () => {
+                        if (currentPageIndex < books.length - 1) {
+                            currentPageIndex++;
+                            loadContent(currentPageIndex);
+                        }
+                    });
+
+                    // Load the first page on startup
+                    loadContent(currentPageIndex);
+                </script>
         </section>    
     </main>
     <footer role="contentinfo">
