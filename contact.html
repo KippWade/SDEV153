@@ -19,33 +19,35 @@
     </nav>
     <main id="main-content" role="main">
         <section aria-labelledby="welcome-heading">
-<div class="form-container">
+<div class="container">
+        <div class="form-container">
             <h2 id="welcome-heading">Contact me</h2>
-        <form id="commentForm" onsubmit="handleSubmit(event)">
-            <div class="form-group">
-                <label for="firstName">First Name:</label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
-            <div class="form-group">
-                <label for="lastName">Last Name:</label>
-                <input type="text" id="lastName" name="lastName" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="comment">Comment:</label>
-                <textarea id="comment" name="comment" rows="4" required></textarea>
-            </div>
-            <div class="checkbox-group">
-                <label>
-                    <input type="checkbox" name="updates" value="yes">
-                    Receive site updates
-                </label>
-            </div>
-            <button type="submit">Submit</button>
-        </form>
+                <form id="commentForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment:</label>
+                    <textarea id="comment" name="comment" rows="4" required></textarea>
+                </div>
+                <div class="checkbox-group">
+                    <label>
+                        <input type="checkbox" name="updates" value="yes">
+                        Receive site updates
+                    </label>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
         <div id="output"></div>
     </div>
 
@@ -72,12 +74,13 @@
             `;
             outputDiv.style.display = 'block'; // Show the output
 
-            // Optional: Clear form
+            // Clear form
             document.getElementById('commentForm').reset();
         }
     </script>
-</body>        </section>    
+    </section>    
     </main>
+</body>        
     <footer role="contentinfo">
         <p>&copy; 2025 Mouse Books. All rights reserved.</p>
     </footer>

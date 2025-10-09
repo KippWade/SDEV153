@@ -151,9 +151,16 @@ p, li, span {
 }
 
 /* styling */
-.form-container {
-    max-width: 400px;
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    max-width: 900px;
     margin: 20px auto;
+    gap: 20px;
+}
+.form-container {
+    flex: 1;
+    min-width: 300px; /* Minimum width for form */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -206,6 +213,8 @@ button:hover {
     background-color: #0056b3;
 }
 #output {
+    flex: 1;
+    min-width: 300px; /* Minimum width for output */
     margin-top: 20px;
     padding: 15px;
     border: 1px solid #e0e0e0;
@@ -214,4 +223,12 @@ button:hover {
 }
 #output p {
     margin: 5px 0;
+}
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column; /* Stack vertically on small screens */
+    }
+    .form-container, #output {
+        min-width: 100%; /* Full width on small screens */
+    }
 }
