@@ -3,51 +3,61 @@ body {
     margin: 0;
     padding: 20px;
     background-color: #f0f0f0;
-    display: flex;
-    gap: 20px;
-    justify-content: center;
     min-height: 100vh;
     width: 100%;
 }
+
 .book-container {
     display: flex;
+    align-items: flex-start;
     max-width: 1200px;
     background: white;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
+    margin: 20px auto;
 }
+
 .book-image {
     flex: 1;
     max-width: 150px;
     padding: 20px;
 }
+
 .book-image img {
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
+
 .book-details {
     flex: 2;
     padding: 20px;
 }
-.book-details h1 {
-    margin: 0 0 10px;
-    font-size: 24px;
-    color: #333;
-}
+
 .book-details p {
     margin: 5px 0;
     font-size: 16px;
     color: #555;
 }
-.book-details .review {
-    margin-top: 20px;
+
+.review {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     font-style: italic;
     line-height: 1.5;
     color: #444;
 }
-@media (max-width: 150px) {
+
+.review p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
     .book-container {
         flex-direction: column;
     }
