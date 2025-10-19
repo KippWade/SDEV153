@@ -24,43 +24,96 @@
             <h2 id="welcome-heading">Send us a comment</h2>
                 <form id="commentForm" onsubmit="handleSubmit(event)">
                 <div class="form-group">
-                    <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" required>
-                </div>
-                <div class="form-group">
-                    <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="comment">Comment:</label>
-                    <textarea id="comment" name="comment" rows="4" required></textarea>
-                </div>
-                <div class="checkbox-group">
-                    <label>Receive updates</label>
-                    <input type="checkbox" name="updates" value="yes">
-                </div>
-                <button type="submit">Submit</button>
+                            <label for="firstName">First Name:</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                            <span class="error" id="firstNameError">Please enter a valid first name (letters only).</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name:</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                            <span class="error" id="lastNameError">Please enter a valid last name (letters only).</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" required>
+                            <span class="error" id="emailError">Please enter a valid email address.</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="comment">Comment:</label>
+                            <textarea id="comment" name="comment" rows="4" required></textarea>
+                            <span class="error" id="commentError">Please enter a comment.</span>
+                        </div>
+                        <div class="checkbox-group">
+                            <label>Receive updates</label>
+                            <input type="checkbox" name="updates" value="yes">
+                        </div>
+                        <button type="submit">Submit</button>
             </form>
         </div>
         <div id="output"></div>
     </div>
 
     <script>
-        function handleSubmit(event) {
-            event.preventDefault(); // Prevent default form submission
+        function validateName(name) {
+            return /^[a-zA-Z\s-]+$/.test(name) && name.trim().length > 0;
+        }
 
-            // Get form values
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function validateComment(comment) {
+            return comment.trim().length > 0;
+        }
+
+        function showError(fieldId, message, show) {
+            const errorElement = document.getElementById(`${fieldId}Error`);
+            errorElement.textContent = message;
+            errorElement.classList.toggle('show', show);
+        }
+
+        function validateField(fieldId, validator, errorMessage) {
+            const field = document.getElementById(fieldId);
+            field.addEventListener('input', () => {
+                const isValid = validator(field.value);
+                showError(fieldId, errorMessage, !isValid);
+            });
+            field.addEventListener('blur', () => {
+                const isValid = validator(field.value);
+                showError(fieldId, errorMessage, !isValid);
+            });
+        }
+        validateField('firstName', validateName, 'Please enter a valid first name (must only contain letters).');
+        validateField('lastName', validateName, 'Please enter a valid last name (must only contain letters).');
+        validateField('email', validateEmail, 'Please enter a valid email address.');
+        validateField('comment', validateComment, 'Please enter a comment.');
+
+        function isFormValid() {
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const comment = document.getElementById('comment').value;
+
+            const isFirstNameValid = validateName(firstName);
+            const isLastNameValid = validateName(lastName);
+            const isEmailValid = validateEmail(email);
+            const isCommentValid = validateComment(comment);
+
+            showError('firstName', 'Please enter a valid first name (must only contain letters).', !isFirstNameValid);
+            showError('lastName', 'Please enter a valid last name (must only contain letters).', !isLastNameValid);
+            showError('email', 'Please enter a valid email address.', !isEmailValid);
+            showError('comment', 'Please enter a comment.', !isCommentValid);
+
+            return isFirstNameValid && isLastNameValid && isEmailValid && isCommentValid;
+        }
+     
+        function handleSubmit(event) {
+            event.preventDefault();
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
             const email = document.getElementById('email').value;
             const comment = document.getElementById('comment').value;
             const updates = document.querySelector('input[name="updates"]').checked ? 'Yes' : 'No';
-
-            // Display values
             const outputDiv = document.getElementById('output');
             outputDiv.innerHTML = `
                 <h3>Submitted Values:</h3>
@@ -71,9 +124,10 @@
                 <p><strong>Receive Updates:</strong> ${updates}</p>
             `;
             outputDiv.style.display = 'block'; // Show the output
-
-            // Clear form
             document.getElementById('commentForm').reset();
+            ['firstName', 'lastName', 'email', 'comment'].forEach(fieldId => {
+                showError(fieldId, '', false);
+            });
         }
     </script>
     </section>    
