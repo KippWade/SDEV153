@@ -6,40 +6,57 @@
     <meta name="description" content="A website of Disney related book reviews">
     <title>Mouse Books - About the Site Author</title>
     <link rel="stylesheet" href="site.css">
+    <style>
+        .about-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .about-container img {
+            max-width: 300px;
+            height: auto;
+        }
+        .about-text {
+            flex: 1;
+        }
+        table {
+            margin-top: 20px;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
     <header role="banner" style="height: 15vh;">
-        <a href="./index.html" ><img src="assets/Mousebooks.png" ></a>
+        <a href="./index.html"><img src="assets/Mousebooks.png" alt="Mouse Books Logo"></a>
     </header>
     <nav aria-label="Main navigation" style="height: 5vh;">
-        <a href="./index.html" >Home</a>
+        <a href="./index.html">Home</a>
         <a href="./about.html" aria-current="page">About</a>
         <a href="./books.html">Books</a>
         <a href="./contact.html">Contact</a>
     </nav>
-    <main id="main-content" role="main" style="height: 65vh; max-height: 65vh; overflow-y:scroll">
+    <main id="main-content" role="main" style="height: 65vh; max-height: 65vh; overflow-y: scroll;">
         <div class="form-container">
             <section aria-labelledby="welcome-heading">
-                <h2 id="welcome-heading">About the site author</h2>
-                <div><img src="assets/kippandfather.jpg" alt="Kipp and his father at Magic Kingdom" style=">
-                <p> I've been going to the Disney Parks for most of my life. This was normally a 
-                    family vacation when I was younger. Once in my adulthood, I started to go to
-                    the parks again, quite frequently. There were some years that I went several
-                    times.
-                </p>
-                <p>
-                    Then, COVID hit. The shutdowns broke a fourteen year streak. Since that time,
-                    I've not been going as much, but still try and make it once a year.
-                </p>
-                <p>
-                    The Disney Parks that I most want to visit, are the Tokyo Parks. I've watched
-                    many videos about them and think they look absolutely amazing!
-                </p>
-                <p>
-                    The Disneyland Paris (formerly EuroDisney) Parks are ones that I would love to
-                    visit at some point. 
-                </p>
-                          </div>
+                <h2 id="welcome-heading">About the Site Author</h2>
+                <div class="about-container">
+                    <img src="assets/kippandfather.jpg" alt="Kipp and his father at Magic Kingdom" style="max-width: 300px;">
+                    <div class="about-text">
+                        <p>I've been going to the Disney Parks for most of my life. This was normally a family vacation when I was younger. Once in my adulthood, I started to go to the parks again, quite frequently. There were some years that I went several times.</p>
+                        <p>Then, COVID hit. The shutdowns broke a fourteen-year streak. Since that time, I've not been going as much, but still try to make it once a year.</p>
+                        <p>The Disney Parks that I most want to visit are the Tokyo Parks. I've watched many videos about them and think they look absolutely amazing!</p>
+                        <p>The Disneyland Paris (formerly EuroDisney) Parks are ones that I would love to visit at some point.</p>
+                    </div>
+                </div>
                 <table>
                     <colgroup>
                         <col span="2" style="min-width: 10vw;">
@@ -55,23 +72,23 @@
                     </tr>
                     <tr>
                         <td>1981</td>
-                        <td>Walt Disney Word, Florida (Magic Kingdom)</td>
+                        <td>Walt Disney World, Florida (Magic Kingdom)</td>
                     </tr>
                     <tr>
                         <td>1983</td>
-                        <td>Walt Disney Word, Florida (Magic Kingdom, EPCOT Center)</td>
+                        <td>Walt Disney World, Florida (Magic Kingdom, EPCOT Center)</td>
                     </tr>
                     <tr>
                         <td>1984</td>
-                        <td>Walt Disney Word, Florida (Magic Kingdom, EPCOT Center)</td>
+                        <td>Walt Disney World, Florida (Magic Kingdom, EPCOT Center)</td>
                     </tr>
                     <tr>
                         <td>1985</td>
-                        <td>Walt Disney Word, Florida (Magic Kingdom, EPCOT Center)</td>
+                        <td>Walt Disney World, Florida (Magic Kingdom, EPCOT Center)</td>
                     </tr>
                     <tr>
                         <td>1986</td>
-                        <td>Walt Disney Word, Florida (Magic Kingdom, EPCOT Center)</td>
+                        <td>Walt Disney World, Florida (Magic Kingdom, EPCOT Center)</td>
                     </tr>
                     <tr>
                         <td>2001</td>
@@ -83,11 +100,11 @@
                     </tr>
                     <tr>
                         <td>2005 - 2019</td>
-                        <td>Walt Disney Word, Florida (Magic Kingdom, EPCOT Center, MGM (Disney) Studios, Animal Kingdom)</td>
+                        <td>Walt Disney World, Florida (Magic Kingdom, EPCOT Center, MGM (Disney) Studios, Animal Kingdom)</td>
                     </tr>
                     <tr>
                         <td>2020 - 2025</td>
-                        <td>Walt Disney Word, Florida (Magic Kingdom, EPCOT Center, MGM (Disney) Studios, Animal Kingdom)</td>
+                        <td>Walt Disney World, Florida (Magic Kingdom, EPCOT Center, MGM (Disney) Studios, Animal Kingdom)</td>
                     </tr>
                     <tr>
                         <td>TBD</td>
@@ -96,9 +113,9 @@
                     <tr>
                         <td>TBD</td>
                         <td>Disneyland, Paris</td>
-                    </tr>                                
+                    </tr>
                 </table>
-            </section>    
+            </section>
         </div>
     </main>
     <footer role="contentinfo" style="height: 1vh;">
