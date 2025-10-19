@@ -6,10 +6,24 @@
     <meta name="description" content="A website of Disney related book reviews">
     <title>Mouse Books - Home</title>
     <link rel="stylesheet" href="site.css">
+    <style>
+        .welcome-container {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+        .welcome-container img {
+            max-width: 300px;
+            height: auto;
+        }
+        .welcome-text {
+            flex: 1;
+        }
+    </style>
 </head>
 <body>
     <header role="banner" style="height: 15vh;">
-        <a href="./index.html" ><img src="assets/Mousebooks.png" ></a>
+        <a href="./index.html"><img src="assets/Mousebooks.png" alt="Mouse Books Logo"></a>
     </header>
     <nav aria-label="Main navigation" style="height: 5vh;">
         <a href="./index.html" aria-current="page">Home</a>
@@ -17,19 +31,19 @@
         <a href="./books.html">Books</a>
         <a href="./contact.html">Contact</a>
     </nav>
-    <main id="main-content" role="main" style="height: 65vh; max-height: 65vh; overflow-y:scroll">
+    <main id="main-content" role="main" style="height: 65vh; max-height: 65vh; overflow-y: scroll;">
         <div class="form-container">
-        <section aria-labelledby="welcome-heading">
-            <h2 id="welcome-heading">Welcome</h2>
-            <div>
-                <img src="assets/bookshelfone.jpg" alt="First bookshelf of Disney Books" style=">            
-            <p>I'm an avid collector of books relating to Walt Disney, and the Disney Parks.</p>
-            <p>It is my intention to give reviews of books that I have in my collection on a
-                regular basis.
-            </p>
-            </div> 
+            <section aria-labelledby="welcome-heading">
+                <h2 id="welcome-heading">Welcome</h2>
+                <div class="welcome-container">
+                    <img src="assets/bookshelfone.jpg" alt="First bookshelf of Disney Books" style="max-width: 300px;">
+                    <div class="welcome-text">
+                        <p>I'm an avid collector of books relating to Walt Disney, and the Disney Parks.</p>
+                        <p>It is my intention to give reviews of books that I have in my collection on a regular basis.</p>
+                    </div>
+                </div>
             </section>
-        </div>    
+        </div>
     </main>
     <footer role="contentinfo" style="height: 1vh;">
         <p>&copy; 2025 Mouse Books. All rights reserved.</p>
